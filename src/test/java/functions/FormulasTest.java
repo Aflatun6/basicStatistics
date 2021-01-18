@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class FormulasTest {
 
@@ -27,6 +28,17 @@ class FormulasTest {
         assertEquals(15.5, Formulas.getMedian(numbers));
     }
 
+    @Test
+    void getMode() {
+
+        List<Double> doubles = Arrays.asList(1d, 2d, 5d, 5d, 5d, 6d);
+        List<Double> doubles2 = Arrays.asList(1d, 2d, 5d, 5d, 5d, 6d, 6d, 6d, 6d);
+        assertEquals(5d, Formulas.getMode(doubles));
+        assertNotEquals(5d, Formulas.getMode(doubles2));
+        assertEquals(6d, Formulas.getMode(doubles2));
+
+
+    }
 
 
     @Test

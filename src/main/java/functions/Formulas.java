@@ -22,7 +22,30 @@ public class Formulas {
     }
 
     public static double getMode(List<Double> numbers) {
-        throw new RuntimeException("should be implemented");
+        List<Double> sorted = numbers.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+
+        double theMode = sorted.get(0);
+        int count = 0;
+        int max = count;
+        double previous = sorted.get(0);
+//        1, 2 , 3 , 3 , 4 , 4 , 6
+        for (double d: sorted){
+            if (d == previous) {
+                count++;
+            }
+            else {
+                count = 1;
+                previous = d;
+            }
+
+            if(count > max){
+                theMode = previous;
+                max = count;
+            }
+
+        }
+
+        return theMode;
     }
 
     public static double getVariance(List<Double> numbers) {
