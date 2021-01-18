@@ -23,6 +23,13 @@ class FormulasTest {
     }
 
     @Test
+    void getMedian() {
+        assertEquals(15.5, Formulas.getMedian(numbers));
+    }
+
+
+
+    @Test
     void constructExpressionString() {
 
         String expected = "y` = 10.0 + 5.0 * x";

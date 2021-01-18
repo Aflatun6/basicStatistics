@@ -1,5 +1,6 @@
 package functions;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,7 +8,21 @@ public class Formulas {
 
 
     public static double getMean(List<Double> numbers) {
-        return numbers.stream().mapToDouble(d -> (double) d).average().getAsDouble();
+        return numbers.stream().mapToDouble(d -> d).average().getAsDouble();
+    }
+
+    public static double getMedian(List<Double> numbers) {
+        int size = numbers.size();
+        List<Double> sorted = numbers.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+
+        return size % 2 != 0
+                ? sorted.get(size / 2)
+                : (sorted.get(size / 2 - 1) + sorted.get(size / 2)) / 2;
+
+    }
+
+    public static double getMode(List<Double> numbers) {
+        throw new RuntimeException("should be implemented");
     }
 
     public static double getVariance(List<Double> numbers) {
@@ -19,7 +34,7 @@ public class Formulas {
             sum += Math.pow(2, (d - mean));
         }
 
-        return (double) sum / numbers.size() - 1;
+        return sum / numbers.size() - 1;
 
     }
 
