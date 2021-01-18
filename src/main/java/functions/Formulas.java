@@ -3,6 +3,7 @@ package functions;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Formulas {
 
@@ -27,22 +28,18 @@ public class Formulas {
         double theMode = sorted.get(0);
         int count = 0;
         int max = count;
-        double previous = sorted.get(0);
-//        1, 2 , 3 , 3 , 4 , 4 , 6
-        for (double d: sorted){
+        double previous = theMode;
+        for (double d : sorted) {
             if (d == previous) {
                 count++;
-            }
-            else {
+            } else {
                 count = 1;
                 previous = d;
             }
-
-            if(count > max){
+            if (count > max) {
                 theMode = previous;
                 max = count;
             }
-
         }
 
         return theMode;
@@ -51,16 +48,20 @@ public class Formulas {
     public static double getVariance(List<Double> numbers) {
 
         double mean = getMean(numbers);
-        double sum = 0d;
 
-        for (double d : numbers) {
-            sum += Math.pow(2, (d - mean));
-        }
+        double sumOfDiffs = numbers.stream().mapToDouble(d -> Math.pow(2, (d - mean))).sum();
 
-        return sum / numbers.size() - 1;
+        return sumOfDiffs / numbers.size() - 1;
+
+//        double sum = 0d;
+//
+//        for (double d : numbers) {
+//            sum += Math.pow(2, (d - mean));
+//        }
+//
+//        return sum / numbers.size() - 1;
 
     }
-
 
     public static double getStandardDeviation(List<Double> numbers) {
         return Math.sqrt(getVariance(numbers));
@@ -78,11 +79,13 @@ public class Formulas {
         List<Double> yZ = getZScore(y);
         int size = x.size();
 
-        double sum = 0d;
+//        double sum = 0d;
+//
+//        for (int i = 0; i < size; i++) {
+//            sum += xZ.get(i) * yZ.get(i);
+//        }
 
-        for (int i = 0; i < size; i++) {
-            sum += xZ.get(i) * yZ.get(i);
-        }
+        double sum = IntStream.range(0, size).mapToDouble(i -> xZ.get(i) * yZ.get(i)).sum();
 
         return sum / size - 1;
 
