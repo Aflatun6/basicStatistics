@@ -60,6 +60,43 @@ class FormulasTest {
     }
 
     @Test
+    void getR() {
+        List<Double> x = Arrays.asList(
+                15.5,
+                13.6,
+                13.5,
+                13.0,
+                13.3,
+                12.4,
+                11.1,
+                13.1,
+                16.1,
+                16.4,
+                13.4,
+                13.2,
+                14.3,
+                16.1);
+
+        List<Double> y = Arrays.asList(
+                0.450,
+                0.420,
+                0.440,
+                0.395,
+                0.395,
+                0.370,
+                0.390,
+                0.400,
+                0.445,
+                0.470,
+                0.390,
+                0.400,
+                0.420,
+                0.450);
+        assertEquals("0.877", String.format("%.3f", Formulas.getR(x, y)));
+
+    }
+
+    @Test
     void constructExpressionString() {
 
         String expected = "y` = 10.0 + 5.0 * x";

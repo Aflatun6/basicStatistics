@@ -68,15 +68,7 @@ public class Formulas {
         List<Double> xZ = getZScore(x);
         List<Double> yZ = getZScore(y);
         int size = x.size();
-
-//        double sum = 0d;
-//
-//        for (int i = 0; i < size; i++) {
-//            sum += xZ.get(i) * yZ.get(i);
-//        }
-
         double sum = IntStream.range(0, size).mapToDouble(i -> xZ.get(i) * yZ.get(i)).sum();
-
         return sum / (size - 1);
 
     }
