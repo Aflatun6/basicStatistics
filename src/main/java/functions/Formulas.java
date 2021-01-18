@@ -48,18 +48,8 @@ public class Formulas {
     public static double getVariance(List<Double> numbers) {
 
         double mean = getMean(numbers);
-
-        double sumOfDiffs = numbers.stream().mapToDouble(d -> Math.pow(2, (d - mean))).sum();
-
-        return sumOfDiffs / numbers.size() - 1;
-
-//        double sum = 0d;
-//
-//        for (double d : numbers) {
-//            sum += Math.pow(2, (d - mean));
-//        }
-//
-//        return sum / numbers.size() - 1;
+        double sumOfDiffs = numbers.stream().mapToDouble(d -> Math.pow((d - mean), 2)).sum();
+        return sumOfDiffs / (numbers.size() - 1);
 
     }
 
@@ -87,7 +77,7 @@ public class Formulas {
 
         double sum = IntStream.range(0, size).mapToDouble(i -> xZ.get(i) * yZ.get(i)).sum();
 
-        return sum / size - 1;
+        return sum / (size - 1);
 
     }
 
