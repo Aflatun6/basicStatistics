@@ -42,6 +42,7 @@ public class Formulas {
             }
         }
 
+//        sorted.stream()
         return theMode;
     }
 
@@ -99,6 +100,16 @@ public class Formulas {
     public static String constructExpressionString(double a, double b, int precision) {
         String string = "y` = %." + precision + "f + %." + precision + "f * x";
         return String.format(string, a, b);
+    }
+
+    public static double getProbabilityDensity(double x, List<Double> numbers) {
+        if (!numbers.contains(x)) throw new RuntimeException("x must be in the dataset");
+        double sd = getStandardDeviation(numbers);
+        List<Double> zScores = getZScore(numbers);
+        Double z = zScores.get(zScores.indexOf(x));
+
+        return (1 / sd * Math.sqrt(2 * Math.PI)) * Math.pow(Math.E, (-0.5) * Math.pow(z, 2));
+
     }
 
 

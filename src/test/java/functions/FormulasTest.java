@@ -50,7 +50,7 @@ class FormulasTest {
     @Test
     void getVariance() {
         List<Double> doubles = Arrays.asList(0.0, 5.6, 8.7, 14.1, 14.1, 15.0, 17.2, 19.2, 19.3, 24.1, 27.7);
-        System.out.println("standard deviation: " + Formulas.getVariance(doubles));
+        System.out.println("variance : " + Formulas.getVariance(doubles));
     }
 
     @Test
