@@ -108,7 +108,7 @@ public class Formulas {
         List<Double> zScores = getZScore(numbers);
         Double z = zScores.get(zScores.indexOf(x));
 
-        return (1 / sd * Math.sqrt(2 * Math.PI)) * Math.pow(Math.E, (-0.5) * Math.pow(z, 2));
+        return (1 / sd * Math.sqrt(2 * Math.PI)) * Math.pow(Math.E, ((-0.5) * Math.pow(z, 2)));
 
     }
 
