@@ -58,7 +58,7 @@ public class Formulas {
         return Math.sqrt(getVariance(numbers));
     }
 
-    public static List<Double> getZScore(List<Double> numbers) {
+    public static List<Double> getZScores(List<Double> numbers) {
         double mean = getMean(numbers);
         double standardDeviation = getStandardDeviation(numbers);
         return numbers.stream().map(d -> (d - mean) / standardDeviation).collect(Collectors.toList());
@@ -66,8 +66,8 @@ public class Formulas {
     }
 
     public static double getR(List<Double> x, List<Double> y) {
-        List<Double> xZ = getZScore(x);
-        List<Double> yZ = getZScore(y);
+        List<Double> xZ = getZScores(x);
+        List<Double> yZ = getZScores(y);
         int size = x.size();
         double sum = IntStream.range(0, size).mapToDouble(i -> xZ.get(i) * yZ.get(i)).sum();
         return sum / (size - 1);
@@ -105,7 +105,7 @@ public class Formulas {
     public static double getProbabilityDensity(double x, List<Double> numbers) {
         if (!numbers.contains(x)) throw new RuntimeException("x must be in the dataset");
         double sd = getStandardDeviation(numbers);
-        List<Double> zScores = getZScore(numbers);
+        List<Double> zScores = getZScores(numbers);
         Double z = zScores.get(zScores.indexOf(x));
 
         return (1 / sd * Math.sqrt(2 * Math.PI)) * Math.pow(Math.E, ((-0.5) * Math.pow(z, 2)));

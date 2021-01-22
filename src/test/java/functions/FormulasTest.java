@@ -54,9 +54,9 @@ class FormulasTest {
     }
 
     @Test
-    void getZScore() {
+    void getZScores() {
         List<Double> doubles = Arrays.asList(7.4, 7.9, 4.1, 8.1, 6.2, 7.1, 7.4, 6.7);
-        System.out.println("z score = " + Formulas.getZScore(doubles));
+        System.out.println("z scores = " + Formulas.getZScores(doubles));
     }
 
     @Test
