@@ -42,7 +42,7 @@ public class Formulas {
             }
         }
 
-//        sorted.stream()
+
         return theMode;
     }
 
@@ -75,7 +75,7 @@ public class Formulas {
     }
 
     public static double getRSquare(List<Double> x, List<Double> y) {
-        return Math.pow(2, getR(x, y));
+        return Math.pow(getR(x, y), 2);
     }
 
     public static String getEquation(List<Double> x, List<Double> y) {
